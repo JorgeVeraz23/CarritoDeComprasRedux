@@ -16,9 +16,14 @@ const initialState = {
             state.productsList = [...state.productsList, action.payload];
             //luego le digo al estado que ya tenia le voy a sumar uno mas
             state.totalCount +=1;
+        },
+        removeProductFromCart: (state, action) => {
+            const productId = action.payload;
+            state.totalCount -= 1;
+            state.productsList = state.productsList.filter(product => product.idProductos != productId);
         }
     }
  })
 //actions creators are generated for each case reducer function
- export const {addProductToCart} = cartSlice.actions;
+ export const {addProductToCart, removeProductFromCart} = cartSlice.actions;
  export default cartSlice.reducer;

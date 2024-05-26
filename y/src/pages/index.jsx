@@ -2,7 +2,6 @@ import { useRef } from "react";
 import Axios from  "axios";
 import { useDispatch } from "react-redux";
 import { setUser } from "../reducers/user/userSlice";
-import {BrowserRouter} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 export const Index = () => {
     const emailField = useRef(null);
