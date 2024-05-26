@@ -1,15 +1,16 @@
 import { useState } from 'react'
-
+import { useSelector } from 'react-redux'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const {email, fullName} = useSelector(state => state.user);
 
   return (
     <>
       <div className='container'>
           <h1>Titulo</h1>
-          <p>Parrafo</p>
+          <p>El email en el store es: {email}</p>
+          <p>El nombre completo en el store es: {fullName}</p>
       </div>
       
     </>
