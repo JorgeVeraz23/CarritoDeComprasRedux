@@ -1,37 +1,17 @@
 import { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { setUser, unsetUser } from './reducers/user/userSlice';
-
+//Componente
+import { Index } from './pages'
+import {Routes, Route} from "react-router-dom";
+import { Home } from './pages/Home';
 function App() {
-  const dispatch = useDispatch();
-  const {email, fullName} = useSelector(state => state.user);
-
+  
   return (
     <>
       <div className='container'>
-          <h1>Bienvenido</h1>
-          <p>{fullName}</p>
-          <p>Su correo electronico en el store es: {email}</p>
-          {/*En el siguiente boton tenemos un buto que cuando damos
-          click ejecutamos un dispatch en el cual cuando damos click
-          disparamos un action CREATOR*/}
-          <button
-            className='btn btn-primary'
-            onClick={() => {
-              dispatch(setUser({
-                email: "jorgeveraug2@gmail.com",
-                fullName: "Jorge Vera",
-                token: "asdadlkamd", 
-              }
-              ))
-            }}
-          >Cambiar Usuario</button>
-          <button
-            className='btn btn-primary'
-            onClick={() => {
-              dispatch(unsetUser())
-            }}
-          >Cerrar Sesion</button>
+          <Routes>
+           <Route path='/' element={<Index />} />
+           <Route path='/home' element={<Home />} />
+          </Routes>
       </div>
       
     </>
