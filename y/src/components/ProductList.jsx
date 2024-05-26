@@ -1,5 +1,20 @@
+import { addProductToCart } from "../reducers/cart/cartSlice"
+import { useDispatch } from "react-redux";
+
+
 export const ProductList = ({products}) => {
+    const dispatch = useDispatch();
     
+
+    const handleAddOrRemoveProduct = (productId) => {
+        const product = products.find(product => product.id == productId);
+        dispatch(addProductToCart(product))
+        if(pdtsInCart.find(pdt => pdt.idProductos == productId)){
+            dispatch(removeProductFromCart(productId));
+        }else{
+            dispatch(addProductToCart(product));
+        }
+    }
 
     return (
         <>
@@ -12,14 +27,12 @@ export const ProductList = ({products}) => {
                     <h4>{product.nombre}</h4>
                     <p><b>Precio</b>{product.precio}</p>
                     <p><b>Categoria</b>{product.categoria}</p>
-                    {/* <button 
-                        className={`btn ${pdtsInCart.find(pdt => pdt.id == product.id) ? "btn-danger" :
-                            "btn-success"
-                        }`}
-                        onClick={() => handleAddOrRemoveProduct(product.id)}
+                    <button 
+                        className={`btn btn-success`}
+                        onClick={() => handleAddOrRemoveProduct(product.idProductos)}
                     >
-                        {pdtsInCart.find(pdt => pdt.id == product.id) ? "Remove" : "Add"} to Cart
-                    </button> */}
+                        Add to Cart
+                    </button>
                 </div> 
                    )   
                 })
