@@ -25,7 +25,7 @@ export const Index = () => {
                         console.log("Credenciales Validas");
                         dispatch(setUser({
                             email: userToLog.email,
-                            fullName: `${userToLog.nombre} ${userToLog.contraseña}`,
+                            fullName: `${userToLog.nombre} ${userToLog.apellido}`,
                             token: Date.now(),
                         }))
                         navigate("/home");
